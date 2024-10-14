@@ -6,21 +6,23 @@ import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Hello World!"
-    }
+    private val _text = MutableLiveData<String>()
     val text: LiveData<String> = _text
 
-    fun changeText() {
-        val randomTexts = listOf(
-            "Hello World!", "Welcome!", "Clicked!"
-        )
+    private lateinit var randomTexts: List<String>
 
-        var newText: String
+    fun setTexts(texts: List<String>) {
+        randomTexts = texts
+        _text.value = randomTexts[0]
+    }
+
+    fun changeText() {
+        val currentText = _text.value
+        var newText: String?
+
         do {
             newText = randomTexts.random()
-        } while (newText == _text.value)
-
+        } while (newText == currentText)
         _text.value = newText
     }
 }

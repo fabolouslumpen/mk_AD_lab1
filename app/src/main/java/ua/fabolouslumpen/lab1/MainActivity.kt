@@ -19,6 +19,14 @@ class MainActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.tx)
         val button = findViewById<Button>(R.id.bt)
 
+        val randomTexts = listOf(
+            getString(R.string.string1),
+            getString(R.string.string2),
+            getString(R.string.string3)
+        )
+
+        viewModel.setTexts(randomTexts)
+
         viewModel.text.observe(this, Observer { newText ->
             textView.text = newText
         })
@@ -28,4 +36,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
