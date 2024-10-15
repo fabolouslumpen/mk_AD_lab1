@@ -13,7 +13,6 @@ class MainViewModel: ViewModel() {
 
     fun setTexts(texts: List<String>) {
         randomTexts = texts
-        _text.value = randomTexts[0]
     }
 
     fun changeText() {
